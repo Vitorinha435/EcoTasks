@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import TaskForm from './TaskForm';
+import TaskList from './TaskList';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    // Placeholder for fetching tasks from an API
+    const initialTasks = [
+      { id: 1, title: 'Sample Task 1', category: 'Work', concluded: false },
+      { id: 2, title: 'Sample Task 2', category: 'Personal', concluded: true },
+    ];
+    setTasks(initialTasks);
+  }, []);
+
+  const handleAddTask = (task) => {
+    console.log('Adding task:', task);
+    // This is a placeholder. In a real app, you'd have a proper ID generation and backend call.
+    setTasks([...tasks, { ...task, id: Date.now(), concluded: false }]);
+  };
+
+  const handleDeleteTask = (taskId) => {
+    console.log('Deleting task with id:', taskId);
+    setTasks(tasks.filter(task => task.id !== taskId));
+  };
+
+  const handleToggleTaskStatus = (taskId) => {
+    console.log('Toggling status for task with id:', taskId);
+    setTasks(
+      tasks.map(task =>
+        task.id === taskId ? { ...task, concluded: !task.concluded } : task
+      )
+    );
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>EcoTasks</h1>
+      <TaskForm handleAddTask={handleAddTask} />
+      <TaskList
+        tasks={tasks}
+        handleDeleteTask={handleDeleteTask}
+        handleToggleTaskStatus={handleToggleTaskStatus}
+      />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
