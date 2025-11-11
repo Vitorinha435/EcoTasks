@@ -1,42 +1,126 @@
+/* src/App.css */
+
+/* Removemos o CSS antigo do template */
+/* ... (pode apagar tudo que tinha antes) ... */
+
+/* Container principal da Aplicação */
 #root {
-  max-width: 1280px;
+  max-width: 800px; /* Mais estreito para uma lista de tarefas */
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h1 {
+  color: var(--primary-color);
+  font-size: 3.2em;
+  line-height: 1.1;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* --- Formulário (TaskForm) --- */
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+form input {
+  flex: 1; /* Faz os inputs crescerem */
+  background-color: var(--dark-card-bg);
 }
 
-.card {
-  padding: 2em;
+form button {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+}
+form button:hover {
+  background-color: #36a171;
+  border-color: #36a171;
 }
 
-.read-the-docs {
-  color: #888;
+/* --- Lista de Tarefas (TaskList) --- */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+/* --- Item da Tarefa (TaskItem) --- */
+.task-item {
+  background-color: var(--dark-card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.task-item .task-info {
+  /* Container para o texto */
+  flex: 1;
+}
+
+.task-item h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.25rem;
+}
+
+.task-item p {
+  margin: 0;
+  color: var(--text-color-light);
+  font-style: italic;
+}
+
+.task-item .task-actions {
+  /* Container para os botões */
+  display: flex;
+  gap: 10px;
+}
+
+.task-item .task-actions button {
+  padding: 0.5em 1em;
+  font-size: 0.9em;
+}
+
+.task-item .task-actions .btn-delete {
+  background-color: var(--danger-color);
+  color: white;
+}
+.task-item .task-actions .btn-toggle {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+.task-item .task-actions .btn-toggle:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* --- Estilo da Tarefa Concluída --- */
+.task-item.concluded {
+  opacity: 0.6;
+}
+
+.task-item.concluded h3,
+.task-item.concluded p {
+  text-decoration: line-through;
+}
+
+.task-item.concluded .btn-toggle {
+  background-color: transparent;
+  border: 1px solid var(--text-color-light);
+  color: var(--text-color-light);
+}
+.task-item.concluded .btn-toggle:hover {
+  background-color: var(--text-color-light);
+  color: var(--dark-bg);
 }

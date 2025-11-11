@@ -1,15 +1,38 @@
-import React from 'react';
+import React from "react";
 
+// Recebemos as props que o App.jsx está enviando
 const TaskItem = ({ task, handleDeleteTask, handleToggleTaskStatus }) => {
+  // Criamos o className dinâmico
+  const taskClassName = `
+    task-item 
+    ${task.concluded ? "concluded" : ""}
+  `;
+
   return (
-    <div>
-      <h3>{task.title}</h3>
-      <p>Category: {task.category}</p>
-      <p>Status: {task.concluded ? 'Concluded' : 'Pending'}</p>
-      <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
-      <button onClick={() => handleToggleTaskStatus(task.id)}>
-        {task.concluded ? 'Mark as Pending' : 'Mark as Concluded'}
-      </button>
+    // Aplicamos o className dinâmico aqui
+    <div className={taskClassName.trim()}>
+      <div className="task-info">
+        <h3>{task.title}</h3>
+        <p>Categoria: {task.category}</p>
+        {/* Status agora é visual (riscado), mas podemos manter se quiser
+        <p>Status: {task.concluded ? 'Concluded' : 'Pending'}</p> 
+        */}
+      </div>
+
+      <div className="task-actions">
+        <button
+          onClick={() => handleToggleTaskStatus(task.id)}
+          className="btn-toggle"
+        >
+          {task.concluded ? "Restaurar" : "Concluir"}
+        </button>
+        <button
+          onClick={() => handleDeleteTask(task.id)}
+          className="btn-delete"
+        >
+          Excluir
+        </button>
+      </div>
     </div>
   );
 };

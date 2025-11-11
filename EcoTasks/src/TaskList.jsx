@@ -1,10 +1,11 @@
-import React from 'react';
-import TaskItem from './TaskItem';
+import React from "react";
+import TaskItem from "./TaskItem";
 
 const TaskList = ({ tasks, handleDeleteTask, handleToggleTaskStatus }) => {
   return (
-    <div>
-      {tasks.map(task => (
+    // Adicionamos a classe aqui
+    <div className="task-list">
+      {tasks.map((task) => (
         <TaskItem
           key={task.id}
           task={task}
