@@ -1,11 +1,9 @@
-/* src/index.css */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  /* Nossas Cores */
-  --primary-color: #42b883; /* Verde "Eco" */
+  --primary-color: #42b883;
   --danger-color: #e74c3c;
   --dark-bg: #242424;
   --dark-card-bg: #2f2f2f;
@@ -28,10 +26,9 @@ body {
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
-  padding-top: 4rem; /* Espaço do topo */
+  padding-top: 4rem;
 }
 
-/* Estilos de botões globais */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -52,8 +49,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* --- MUDANÇA AQUI --- */
-/*Inputs e Formulários */
 input,
 select {
   border-radius: 8px;
@@ -72,7 +67,6 @@ select:focus {
   outline: none;
 }
 
-/* Adiciona cor de fundo para as opções do select no dark mode */
 select option {
   background-color: var(--dark-card-bg);
   color: var(--text-color);

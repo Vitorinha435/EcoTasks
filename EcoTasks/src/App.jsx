@@ -7,7 +7,6 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    // Placeholder for fetching tasks from an API
     const initialTasks = [
       { id: 1, title: 'Sample Task 1', category: 'Work', concluded: false },
       { id: 2, title: 'Sample Task 2', category: 'Personal', concluded: true },
@@ -17,7 +16,6 @@ function App() {
 
   const handleAddTask = (task) => {
     console.log('Adding task:', task);
-    // This is a placeholder. In a real app, you'd have a proper ID generation and backend call.
     setTasks([...tasks, { ...task, id: Date.now(), concluded: false }]);
   };
 
