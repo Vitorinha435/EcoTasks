@@ -4,10 +4,20 @@ const TaskForm = ({ handleAddTask }) => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
 
+  const categories = [
+    "Reciclagem",
+    "Economia de Água",
+    "Economia de Energia",
+    "Consumo Consciente",
+    "Reutilização",
+    "Transporte Sustentável",
+    "Meio Ambiente",
+  ];
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title || !category) {
-      alert("Por favor, preencha ambos os campos");
+      alert("Por favor, preencha o título e selecione uma categoria");
       return;
     }
     handleAddTask({ title, category });
@@ -23,12 +33,19 @@ const TaskForm = ({ handleAddTask }) => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <input
-        type="text"
-        placeholder="Categoria"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-      />
+
+      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <option value="" disabled>
+          Selecione uma categoria
+        </option>
+
+        {categories.map((cat) => (
+          <option key={cat} value={cat}>
+            {cat}
+          </option>
+        ))}
+      </select>
+
       <button type="submit">Adicionar Tarefa</button>
     </form>
   );

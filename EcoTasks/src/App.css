@@ -1,11 +1,8 @@
 /* src/App.css */
 
-/* Removemos o CSS antigo do template */
-/* ... (pode apagar tudo que tinha antes) ... */
-
 /* Container principal da Aplicação */
 #root {
-  max-width: 800px; /* Mais estreito para uma lista de tarefas */
+  max-width: 800px;
   margin: 0 auto;
   padding: 1rem;
   text-align: center;
@@ -24,8 +21,10 @@ form {
   margin-bottom: 2rem;
 }
 
-form input {
-  flex: 1; /* Faz os inputs crescerem */
+/* --- MUDANÇA AQUI --- */
+form input,
+form select {
+  flex: 1; /* Faz os inputs e o select crescerem */
   background-color: var(--dark-card-bg);
 }
 
@@ -65,7 +64,6 @@ form button:hover {
 }
 
 .task-item .task-info {
-  /* Container para o texto */
   flex: 1;
 }
 
@@ -81,7 +79,6 @@ form button:hover {
 }
 
 .task-item .task-actions {
-  /* Container para os botões */
   display: flex;
   gap: 10px;
 }
